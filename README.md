@@ -17,10 +17,10 @@ This project aims to enhance the quality of images by removing noise using a con
 ## Installation
 To get started with this project, clone the repository and install the required dependencies.
 
-# Clone the repository
+### Clone the repository
 git clone https://github.com/madhu03111/Image-denoising.git
 
-# Install dependencies
+### Install dependencies
 Ensure you have the following dependencies installed:
 - numpy
 - tensorflow
@@ -41,7 +41,9 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 3. Evaluate the model:
+```python
 results = unet.evaluate(test_generator, steps=50)
+```
 
 
 ## Model Architecture
@@ -51,29 +53,32 @@ The U-Net model consists of downsampling and upsampling blocks, enabling it to c
 ## Training
 
 Train the model using the `fit` method with the provided data generators. Adjust the number of epochs and steps per epoch as necessary.
-
+```python
 history = unet.fit(train_generator,
                    steps_per_epoch=12,  
                    epochs=25, 
                    validation_data=test_generator,
                    validation_steps=6)
+```
 
 
 ## Evaluation
 
 Evaluate the model using the `evaluate` method and print the results.
-
+```python
 results = unet.evaluate(test_generator, steps=50)
 print(f"Test Loss: {test_loss:.4f}")
 print(f"Test PSNR: {test_psnr:.2f} dB")
 print(f"Test MSE: {test_mse:.4f}")
 print(f"Test MAE: {test_mae:.4f}")
+```
+![image](https://github.com/madhu03111/Image-denoising/assets/149709601/c3866c3a-5518-42a3-8b53-24392da49e4e)
 
 
 ## Results
 
 Plot the training and validation loss to visualize the model's performance over time.
-
+```python
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
 plt.title('Model Loss')
@@ -81,4 +86,9 @@ plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend(['Train', 'Validation'], loc='upper left')
 plt.show()
+```
+
+
+
+
 
