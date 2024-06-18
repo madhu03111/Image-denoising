@@ -3,9 +3,9 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers, losses, Model
 from tensorflow.keras.metrics import MeanSquaredError, MeanAbsoluteError
+from PIL import Image
 import matplotlib.pyplot as plt
 
-from PIL import Image
 
 def image_generator(folder, batch_size=4):
     while True:
@@ -95,3 +95,12 @@ print(f"Test Loss: {test_loss:.4f}")
 print(f"Test PSNR: {test_psnr:.2f} dB")
 print(f"Test MSE: {test_mse:.4f}")
 print(f"Test MAE: {test_mae:.4f}")
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend(['Train', 'Validation'], loc='upper left')
+plt.show()
+
